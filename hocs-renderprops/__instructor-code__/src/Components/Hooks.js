@@ -4,7 +4,8 @@
 //     constructor(){
 //         super();
 //         this.state = {
-//             count: 0
+//             count: 0,
+//             name: ''
 //         }
 //     }
 
@@ -12,10 +13,15 @@
     // this.setState({ count: count + 1})
 //}
 
+//     handleInput(value){
+//      this.setState({name: e.target.value})
+//}
+
 //     render(){
 //         return(
 //             <div>
 //                 {this.state.count}
+//                  <input onChange={(e) => this.handleInput(e.target.value)}
 //             </div>
 //         )
 //     }
@@ -23,13 +29,33 @@
 
 // export default Hooks;
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import NameDisplay from './NameDisplay';
 
 const Hooks = () => {
-    const [count, setCount] = 
+    const [count, setCount] = useState(0)
+    const [name, setName] = useState('')
+
+    useEffect(() => {
+        console.log('useEffect Invoked')
+    }, [])
+
+    useEffect(() => {
+        console.log('Count useEffect Invoked')
+    }, [count])
+
+    // const handleAdd = () => {
+    //     setCount(count + 1)
+    // }
 
     return(
-        <div></div>
+        <div>
+            <NameDisplay name={name}/>
+            <input value={name} onChange={(e) => setName(e.target.value)} />
+            <p>{count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+            <button onClick={() => setCount(count - 1)}>Decrement</button>
+        </div>
     )
 }
 

@@ -1,36 +1,22 @@
-// import React, { Component } from 'react';
+import React from 'react';
 
-// class Hooks extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             count: 0
-//         }
-//     }
+const withFilteredProps = (BaseComponent) => 
+    ({list, genre}) => {
 
-//     handleAdd(){
-    // this.setState({ count: count + 1})
-//}
-
-//     render(){
-//         return(
-//             <div>
-//                 {this.state.count}
-//             </div>
-//         )
-//     }
-// }
-
-// export default Hooks;
-
-import React, {useState} from 'react';
-
-const Hooks = () => {
-    const [count, setCount]
-
-    return(
-        <div></div>
-    )
 }
 
-export default Hooks;
+const DisplayList = ({artistList}) => {
+    return (
+        <div> 
+            {artistList.map((artist) => (
+                <div className='artist-container' key={artist.name}>
+                    <img className='artist-img' src={artist.artistImg} alt={artist.name} />
+                    <div className="className">
+                        <h3>{artist.name}</h3>
+                        <p>{artist.genre}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+}
